@@ -25,7 +25,7 @@ class App extends Component {
     this.timerID = setInterval(
       () => {
         let now = moment(new Date()) //todays date
-        let end = moment("2018-01-23, 9:00");
+        let end = moment("2018-03-04, 20:00");
         let duration = moment.duration(now.diff(end));
 
         // define variables

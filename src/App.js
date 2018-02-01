@@ -1,16 +1,8 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 
-import moment from 'moment';
 import Clock from './components/clock';
-import Background from './components/background'
-
-
 class App extends Component {
-  constructor(props) {
-    super(props);
-
-  }
+ 
 
   render() {
     return (
@@ -18,11 +10,13 @@ class App extends Component {
         <div className="theatre">
           <em className="curtain-left"></em>
           <em className="curtain-right"></em>
-          <p className="header-text">COUNTDOWN TO THE OSCAR NOMINATIONS!!!</p>
+          <p className="header-text">COUNTDOWN TO THE OSCARS!!!</p>
           <Clock />
         </div>
         
       </div>
+
+      
     );
   }
 }
