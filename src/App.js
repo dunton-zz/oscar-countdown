@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import SoundBar from './components/sound'
 import Clock from './components/clock';
 class App extends Component {
  
@@ -13,7 +13,9 @@ class App extends Component {
           <p className="header-text">COUNTDOWN TO THE OSCARS!!!</p>
           <Clock />
         </div>
-        
+        <div>
+          <SoundBar />
+        </div>
       </div>
 
       

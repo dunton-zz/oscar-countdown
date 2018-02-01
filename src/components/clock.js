@@ -25,14 +25,16 @@ class App extends Component {
     this.timerID = setInterval(
       () => {
         let now = moment(new Date()) //todays date
-        let end = moment("2018-03-04, 20:00");
+        let end = moment("2018-03-04 20:00");
         let duration = moment.duration(now.diff(end));
+
+        console.log(duration);
 
         // define variables
         let days, hours, minutes, seconds;
 
         // find days
-        let exactDays = Math.abs(duration.days());
+        let exactDays = Math.floor(Math.abs(duration.asDays()));
         if (exactDays < 10) {
           days = '0' + exactDays
         } else {
@@ -40,15 +42,18 @@ class App extends Component {
         }
 
         // find hours
-        let exactHours = Math.abs(duration.hours());
+        let hoursToMinus = exactDays * 24;
+        let exactHours = Math.floor(Math.abs(duration.asHours())) - hoursToMinus;
         if (exactHours < 10) {
           hours = '0' + exactHours
         } else {
           hours = exactHours;
         }
 
-        // find minutes
-        let exactMinutes = Math.abs(duration.minutes());
+        // find minutes make sure to include already subtracted time
+        let minutesToMinus = (exactHours + hoursToMinus) * 60;
+
+        let exactMinutes = Math.floor(Math.abs(duration.asMinutes())) - minutesToMinus;
         if (exactMinutes < 10) {
           minutes = '0' + exactMinutes
         } else {
@@ -56,7 +61,9 @@ class App extends Component {
         }
 
         // find seconds
-        let exactSeconds = Math.abs(duration.seconds());
+        let secondsToMinus = (minutesToMinus + exactMinutes) * 60;
+
+        let exactSeconds = Math.floor(Math.abs(duration.asSeconds())) - secondsToMinus;
         
         if (exactSeconds < 10) {
           seconds = '0' + exactSeconds
@@ -67,14 +74,12 @@ class App extends Component {
 
         this.setState({
       
-          timeDays: days,
+          timeDays: exactDays,
           timeHours: hours,
           timeMins: minutes, 
           timeSecs: seconds
         })
-      },  1000
-     
-    );
+      },  1000);
 
   }
 
@@ -82,35 +87,6 @@ class App extends Component {
     clearInterval(this.timerID)
   }
 
-/* FIGURE OUT HOW TO CALL THIS INSIDE COMPONENTDIDMOUNT
-  findDiff() {
-    // Event to count down to
-
-    let now = moment(new Date()) //todays date
-    let end = moment("2018-01-23, 9:00");
-    let duration = moment.duration(now.diff(end));
-
-    // find days
-    let days = Math.abs(duration.days());
-
-    // find hours
-    let hours = Math.abs(duration.hours());
-
-    // find minutes
-    let minutes = Math.abs(duration.minutes());
-
-    // find seconds
-    let seconds = Math.abs(duration.seconds());
-
-    this.setState({
-  
-      timeDays: days,
-      timeHours: hours,
-      timeMins: minutes, 
-      timeSecs: seconds
-    })
-  }
-*/
 
   render() {
     return (
