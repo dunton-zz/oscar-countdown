@@ -113,3 +113,19 @@ div.theatre.open .curtain-right {
     left: 49%;
     transform: rotate(25deg) skew(15deg,5deg);
 }
+
+@media all and (max-width: 699px) {
+  .timer {
+    margin-top: 55%;
+  }
+
+  .header-text {
+    color: gold;
+    font-size: 30px;
+    margin-top: 25%;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    line-height: 60px;
+  }
+}
