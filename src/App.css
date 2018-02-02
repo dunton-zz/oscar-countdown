@@ -90,14 +90,14 @@ div.theatre .curtain-left, div.theatre .curtain-right {
 
 .curtain-right { right: -10% }
 
-div.theatre:hover .curtain-right, div.theatre:hover .curtain-left {
+div.theatre.open .curtain-right, div.theatre.open .curtain-left {
     width: 0;
     background-size: 1px;
     transition: all 4s ease;
     transform: rotate(15deg);
 }
 
-div.theatre:hover .curtain-right {
+div.theatre.open .curtain-right {
     transition: all 4s ease;
     transform: rotate(-15deg);
 }
